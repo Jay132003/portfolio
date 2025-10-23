@@ -75,11 +75,21 @@ export default function Footer() {
 
           {/* Social Section */}
           <div className="mb-8 rounded-2xl bg-[#F7F7F7] dark:bg-[#2C2C2C] px-8 py-8">
-            <div className="flex items-center justify-between">
+            <div
+              className="
+                flex flex-col sm:flex-row
+                items-center sm:items-center
+                justify-center sm:justify-between
+                gap-4 sm:gap-0
+              "
+              >
+              {/* Follow Me text */}
               <div className="flex items-center gap-3">
-                <div className="h-2 w-2 rounded-full bg-[#CCCCCC] dark:bg-[#616161]"></div>
-                <span className="text-lg text-[#666666] dark:text-[#C0C0C0]">Follow Me</span>
-              </div>
+                <div className="h-2 w-2 rounded-full bg-[#CCCCCC] dark:bg-[#616161]" />
+                <span className="text-base sm:text-lg text-[#666666] dark:text-[#C0C0C0]">
+                  Follow Me
+                </span>
+            </div>
 
               {/* Social Icons */}
               <div className="flex gap-2 sm:gap-4">
