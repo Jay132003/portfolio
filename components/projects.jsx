@@ -1,14 +1,13 @@
 "use client"
 
-import React from 'react'
+import React from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { Card } from "@/components/ui/card"
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"
 
 export default function Projects() {
-
-  const router = useRouter();
+  const router = useRouter()
 
   const projects = [
     {
@@ -35,58 +34,103 @@ export default function Projects() {
   ]
 
   return (
-    <div className="bg-[#F7F7F7] dark:bg-[#2C2C2C] rounded-3xl p-8 md:p-12 border border-gray-200 dark:border-[#2c2c2c]">
-          {/* Section header */}
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-gray-400"></div>
-              <h2 className="text-2xl font-bold text-[#666666] dark:text-[#C0C0C0]">Projects</h2>
-            </div>
-            <Button
-              onClick={()=> {
-                router.push("/projects"); // or useLink for anchor-style navigation
-              }}
-              effect="ringHover"
-              variant="outline"
-              className="border-2 border-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 font-semibold bg-transparent"
-            >
-              View All
-              <ArrowRight size={20} className="ml-2" />
-            </Button>
-          </div>
-
-          {/* Projects grid */}
-          <div className="space-y-4">
-            {projects.map((project) => (
-              <Card
-                key={project.id}
-                className="bg-[#FFFFFF] dark:bg-[#373737] p-6 border-2 border-gray-100 dark:border-[#2C2C2C] hover:border-gray-200 hover:shadow-md transition-all cursor-pointer group"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    {/* Project icon */}
-                    <div
-                      className={`w-16 h-16 rounded-full ${project.bgColor} flex items-center justify-center text-white text-2xl font-bold flex-shrink-0`}
-                    >
-                      {project.icon}
-                    </div>
-
-                    {/* Project info */}
-                    <div>
-                      <h3 className="text-xl font-bold text-[#2C2C2C] dark:text-[#FFFFFF] mb-1">{project.name}</h3>
-                      <p className="text-[#2C2C2C] dark:text-[#FFFFFF]">{project.description}</p>
-                    </div>
-                  </div>
-
-                  {/* Arrow icon */}
-                  <ArrowRight
-                    size={24}
-                    className="text-gray-400 group-hover:text-gray-600 transition-colors flex-shrink-0"
-                  />
-                </div>
-              </Card>
-            ))}
-          </div>
+    <section
+      className="
+        bg-[#F7F7F7] dark:bg-[#2C2C2C]
+        rounded-3xl
+        px-5 sm:px-8 md:px-12
+        py-8 sm:py-10 md:py-12
+        border border-gray-200 dark:border-[#2C2C2C]
+      "
+    >
+      {/* Header */}
+      <div
+        className="
+          flex flex-col md:flex-row
+          items-start md:items-center
+          justify-between
+          mb-6 sm:mb-8 gap-4
+        "
+      >
+        <div className="flex items-center gap-3">
+          <div className="w-2 h-2 rounded-full bg-gray-400"></div>
+          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-[#555555] dark:text-[#C0C0C0] tracking-tight">
+            Projects
+          </h2>
         </div>
+
+        <div className="w-full md:w-auto md:ml-auto">
+          <Button
+            onClick={() => router.push("/projects")}
+            variant="outline"
+            className="
+              border border-gray-300
+              hover:bg-gray-100 dark:hover:bg-gray-800
+              font-medium md:font-semibold
+              bg-transparent
+              text-sm md:text-base
+              w-full md:w-auto
+              h-9 sm:h-10 md:h-11
+              px-4 sm:px-6
+              rounded-xl
+            "
+          >
+            View All
+            <ArrowRight size={18} className="ml-2" />
+          </Button>
+        </div>
+      </div>
+
+      {/* Project cards (always single column) */}
+      <div className="flex flex-col gap-4 sm:gap-5">
+        {projects.map((project) => (
+          <Card
+            key={project.id}
+            className="
+              bg-white dark:bg-[#373737]
+              px-4 py-4 sm:px-6 sm:py-5
+              border border-gray-100 dark:border-[#2C2C2C]
+              rounded-2xl
+              shadow-sm hover:shadow-md
+              transition-all duration-200
+              hover:-translate-y-[2px]
+              active:scale-[0.99]
+            "
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3 sm:gap-4">
+                {/* Icon */}
+                <div
+                  className={`
+                    w-12 h-12 sm:w-14 sm:h-14
+                    rounded-full ${project.bgColor}
+                    flex items-center justify-center
+                    text-white text-lg sm:text-xl font-bold flex-shrink-0
+                  `}
+                >
+                  {project.icon}
+                </div>
+
+                {/* Info */}
+                <div>
+                  <h3 className="text-base sm:text-lg font-semibold text-[#2C2C2C] dark:text-white mb-[2px]">
+                    {project.name}
+                  </h3>
+                  <p className="text-sm text-[#555555] dark:text-[#C0C0C0] leading-snug">
+                    {project.description}
+                  </p>
+                </div>
+              </div>
+
+              {/* Arrow */}
+              <ArrowRight
+                size={20}
+                className="text-gray-400 group-hover:text-gray-600 transition-colors"
+              />
+            </div>
+          </Card>
+        ))}
+      </div>
+    </section>
   )
 }
