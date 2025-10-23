@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { Card } from "@/components/ui/card"
 
-export default function Projects() {
+export default function Experience() {
 
-  const projects = [
+  const experience = [
     {
       id: 1,
       name: "Road Side Assistance",
@@ -35,7 +35,7 @@ export default function Projects() {
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-gray-400"></div>
-              <h2 className="text-2xl font-bold text-[#666666] dark:text-[#C0C0C0]">Projects</h2>
+              <h2 className="text-2xl font-bold text-[#666666] dark:text-[#C0C0C0]">Experience</h2>
             </div>
             <Button
               effect="ringHover"
@@ -47,26 +47,26 @@ export default function Projects() {
             </Button>
           </div>
 
-          {/* Projects grid */}
+          {/* experience grid */}
           <div className="space-y-4">
-            {projects.map((project) => (
+            {experience.map((experience) => (
               <Card
-                key={project.id}
+                key={experience.id}
                 className="bg-[#FFFFFF] dark:bg-[#373737] p-6 border-2 border-gray-100 dark:border-[#2C2C2C] hover:border-gray-200 hover:shadow-md transition-all cursor-pointer group"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    {/* Project icon */}
+                    {/* experience icon */}
                     <div
-                      className={`w-16 h-16 rounded-full ${project.bgColor} flex items-center justify-center text-white text-2xl font-bold flex-shrink-0`}
+                      className={`w-16 h-16 rounded-full ${experience.bgColor} flex items-center justify-center text-white text-2xl font-bold flex-shrink-0`}
                     >
-                      {project.icon}
+                      {experience.icon}
                     </div>
 
-                    {/* Project info */}
+                    {/* experience info */}
                     <div>
-                      <h3 className="text-xl font-bold text-[#2C2C2C] dark:text-[#FFFFFF] mb-1">{project.name}</h3>
-                      <p className="text-[#2C2C2C] dark:text-[#FFFFFF]">{project.description}</p>
+                      <h3 className="text-xl font-bold text-[#2C2C2C] dark:text-[#FFFFFF] mb-1">{experience.name}</h3>
+                      <p className="text-[#2C2C2C] dark:text-[#FFFFFF]">{experience.description}</p>
                     </div>
                   </div>
 

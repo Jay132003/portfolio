@@ -20,8 +20,12 @@ export function Navigation() {
       link: "#Home",
     },
     {
-      name: "About",
-      link: "#About",
+      name: "Projects",
+      link: "#Projects",
+    },
+    {
+      name: "Experience",
+      link: "#Experience",
     },
     {
       name: "Contact",
