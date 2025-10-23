@@ -147,13 +147,13 @@ export default function Footer() {
           </div>
 
           {/* Copyright Section */}
-          <div className="rounded-2xl bg-[#F7F7F7] px-8 py-12 text-center">
-            <p className="text-gray-600">© 2023 Subtle Folio – Created with{" "}
-            <a href="#" className="hover:text-gray-900">Khushal Khandelwal</a>
+          <div className="rounded-2xl bg-[#F7F7F7] dark:bg-[#2C2C2C] px-8 py-12 text-center">
+            <p className="dark:text-white text-gray-600">Created with{" "}
+            <a href="#" className="hover:text-gray-900 dark:hover:text-gray-300">Khushal Khandelwal</a>
             {" "}😎</p>
-            <p className="mt-3 text-gray-600">
+            <p className="mt-3 text-gray-600 dark:text-white">
             Inspired by{" "}
-              <a href="https://mauliktanna.com/" className="hover:text-gray-900">
+              <a href="https://mauliktanna.com/" className="hover:text-gray-900 dark:hover:text-gray-300">
               Maulik Tanna
               </a>{" "}❤️
             </p>
