@@ -13,12 +13,12 @@ export default function Home() {
     <main className="min-h-screen bg-[#F0F0F0] dark:bg-[#161616] p-6">
       <Navigation/>
         <div className="max-w-4xl mx-auto pt-24">
-          <div className="bg-white dark:bg-[#212121] rounded-3xl p-8 md:p-12 shadow-sm border border-gray-200 dark:border-[#2c2c2c] mb-8">
+          <div id="Home" className="bg-white dark:bg-[#212121] rounded-3xl p-8 md:p-12 shadow-sm border border-gray-200 dark:border-[#2c2c2c] mb-8">
             <Header/>
             <MainContent/>
-            <div className="mt-8"><Projects/></div>
-            <div className="mt-8"><Experience/></div>
-            <div className="mt-8"><Footer/></div>
+            <div id="Projects" className="mt-8"><Projects/></div>
+            <div id="Experience" className="mt-8"><Experience/></div>
+            <div id="Contact" className="mt-8"><Footer/></div>
           </div>
         </div>
       </main>

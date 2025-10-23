@@ -1,14 +1,9 @@
-"use client"
-
 import React from 'react'
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { Card } from "@/components/ui/card"
-import { useRouter } from "next/navigation";
 
-export default function Projects() {
-
-  const router = useRouter();
+export default function ProjectPage() {
 
   const projects = [
     {
@@ -43,9 +38,6 @@ export default function Projects() {
               <h2 className="text-2xl font-bold text-[#666666] dark:text-[#C0C0C0]">Projects</h2>
             </div>
             <Button
-              onClick={()=> {
-                router.push("/projects"); // or useLink for anchor-style navigation
-              }}
               effect="ringHover"
               variant="outline"
               className="border-2 border-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 font-semibold bg-transparent"

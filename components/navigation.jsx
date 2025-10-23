@@ -29,7 +29,7 @@ export function Navigation() {
     },
     {
       name: "Contact",
-      link: "#contact",
+      link: "#Contact",
     },
   ];
 
