@@ -105,7 +105,7 @@ export default function Projects() {
                     w-12 h-12 sm:w-14 sm:h-14
                     rounded-full ${project.bgColor}
                     flex items-center justify-center
-                    text-white text-lg sm:text-xl font-bold flex-shrink-0
+                    text-white text-lg sm:text-xl font-bold shrink-0
                   `}
                 >
                   {project.icon}

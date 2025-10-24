@@ -74,7 +74,7 @@ export default function Footer() {
           </div>
 
           {/* Social Section */}
-          <div className="mb-8 rounded-2xl bg-[#F7F7F7] dark:bg-[#2C2C2C] px-8 py-8">
+          <div className="mb-8 rounded-2xl border border-gray-200 dark:border-[#2C2C2C] bg-[#F7F7F7] dark:bg-[#2C2C2C] px-8 py-8">
             <div
               className="
                 flex flex-col sm:flex-row
@@ -157,7 +157,7 @@ export default function Footer() {
           </div>
 
           {/* Copyright Section */}
-          <div className="rounded-2xl bg-[#F7F7F7] dark:bg-[#2C2C2C] px-8 py-12 text-center">
+          <div className="rounded-2xl border border-gray-200 dark:border-[#2C2C2C] bg-[#F7F7F7] dark:bg-[#2C2C2C] px-8 py-12 text-center">
             <p className="dark:text-white text-gray-600">Created with{" "}
             <a href="https://khushalz.vercel.app/" className="hover:text-gray-900 dark:hover:text-gray-300">Khushal Khandelwal</a>
             {" "}😎</p>
