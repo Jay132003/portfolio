@@ -34,7 +34,7 @@ export default function Experience() {
     <section
       className="
         bg-[#F7F7F7] dark:bg-[#2C2C2C]
-        rounded-3xl
+        rounded-2xl
         px-5 sm:px-8 md:px-12
         py-8 sm:py-10 md:py-12
         border border-gray-200 dark:border-[#2C2C2C]
