@@ -167,3 +167,19 @@
 html {
   scroll-behavior: smooth;
 }
+
+.page-content {
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 1s ease, filter 1s ease;
+}
+
+.page-content.show {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.preloader-hide {
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
