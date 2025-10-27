@@ -35,7 +35,7 @@ export default function ClientRootLayout({ children }) {
             width: "100vw",
             height: "100vh",
             zIndex: 9999,
-            background: "linear-gradient(to bottom, #87CEEB 0%, #E0E0E0 100%)",
+            background: "#ffffff dark:#212121",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
