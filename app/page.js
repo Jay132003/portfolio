@@ -8,14 +8,14 @@ import Experience from "@/components/experience";
 import Footer from "@/components/footer";
 import { Dice1 } from "lucide-react";
 import WhatIListen from "@/components/what-i-listen";
+import { Globe } from "@/components/ui/globe";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#F0F0F0] dark:bg-[#161616] p-6">
+    <main className=" dark:bg-[#212121] min-h-screen p-6">
       <Navigation/>
-        <div className="max-w-4xl mx-auto pt-24">
-          <div id="Home" className="bg-white dark:bg-[#212121] rounded-2xl p-8 md:p-4 shadow-sm border border-gray-200 dark:border-[#2c2c2c] mb-8">
-            <Header/>
+        <div className="max-w-5xl mx-auto pt-8">
+          <div id="Home" className="bg-white dark:bg-[#212121] p-8 md:p-4 mb-8">
             <MainContent/>
             <div id="Projects" className="mt-8"><Projects/></div>
             <div id="Experience" className="mt-8"><Experience/></div>

@@ -43,7 +43,7 @@ export default function MainContent() {
             leading-tight
           "
         >
-          I&apos;m Jay Panchal
+          Hi, I&apos;m Jay 👋
         </h1>
 
         <p
@@ -58,7 +58,9 @@ export default function MainContent() {
             leading-relaxed
           "
         >
-          With great power comes great electricity bills!
+          Engineering taught me how to think, but curiosity taught me how to grow.<br/>
+          I love building things — not just products, but skills, ideas, and possibilities.<br/>
+          Every day, I aim to move one step closer to becoming the person I’ve always wanted to be.<br/>
         </p>
 
         {/* Action buttons */}

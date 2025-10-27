@@ -2,6 +2,7 @@
 
 import { Button } from "./ui/button"
 import { useState } from "react"
+import { Globe } from "./ui/globe"
 
 export default function Footer() {
   const [isCopied, setIsCopied] = useState(false)
@@ -13,12 +14,13 @@ export default function Footer() {
   }
 
   return (
-    <footer className="w-full">
+    <footer className="w-full select-none">
         {/* Main Footer Container with Border */}
         <div className="bg-white dark:bg-[#212121]">
-
+          <div className="relative h-[300px] overflow-hidden">
+          <Globe className="w-[1000px] opacity-50"/>
           {/* Let's Work Together Section */}
-          <div className="mb-8 text-center">
+          <div className="absolute mb-8 text-center top-[26%] left-[22%]">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-[#FFFFFF] mb-4">The Future Needs Your Vision.</h2>
             <p className=" text-1xl sm:text-lg text-gray-600 dark:text-[#C0C0C0] mb-8">And I’ll make sure it looks and feels extraordinary.</p>
 
@@ -72,7 +74,7 @@ export default function Footer() {
               </Button>
             </div>
           </div>
-
+          </div>
           {/* Social Section */}
           <div className="mb-8 rounded-2xl border border-gray-200 dark:border-[#2C2C2C] bg-[#F7F7F7] dark:bg-[#2C2C2C] px-8 py-8">
             <div
