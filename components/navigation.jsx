@@ -1,88 +1,91 @@
 "use client";
 
+import React from "react";
 import {
-  Navbar,
-  NavBody,
-  NavItems,
-  MobileNav,
-  NavbarLogo,
-  NavbarButton,
-  MobileNavHeader,
-  MobileNavToggle,
-  MobileNavMenu,
-} from "@/components/ui/resizable-navbar";
-import { useState } from "react";
-import { ModeToggle } from "./theme-toggle";
+  IconHome,
+  IconBriefcase,
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBrandX,
+} from "@tabler/icons-react";
+import { AnimatedThemeToggler } from "./ui/animated-theme-toggler";
+import { motion } from "framer-motion";
 
 export function Navigation() {
   const navItems = [
-    {
-      name: "Home",
-      link: "#Home",
-    },
-    {
-      name: "Projects",
-      link: "#Projects",
-    },
-    {
-      name: "Experience",
-      link: "#Experience",
-    },
-    {
-      name: "Contact",
-      link: "#Contact",
-    },
+    { title: "Home", icon: <IconHome />, href: "#Home" },
+    { title: "Projects", icon: <IconBriefcase />, href: "#Projects" },
+    { title: "GitHub", icon: <IconBrandGithub />, href: "https://github.com" },
+    { title: "LinkedIn", icon: <IconBrandLinkedin />, href: "https://linkedin.com" },
+    { title: "X", icon: <IconBrandX />, href: "https://x.com" },
   ];
 
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   return (
-      <Navbar>
-        {/* Desktop Navigation */}
-        <NavBody>
-          <NavbarLogo />
-          <NavItems items={navItems} />
-          <div className="flex items-center gap-4">
-           <NavbarButton variant="secondary"><ModeToggle/></NavbarButton>
-            <NavbarButton variant="primary">Book a call</NavbarButton>
-          </div>
-        </NavBody>
+    <motion.nav
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="
+        fixed bottom-8 left-1/2 -translate-x-1/2
+        z-50
+      "
+    >
+      <motion.div
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 180, damping: 12 }}
+        className="
+          flex items-center justify-center gap-3
+          px-6 py-2.5
+          rounded-2xl
+          border border-gray-400/40 dark:border-gray-600/60
+          bg-white/85 dark:bg-neutral-900/85
+          shadow-[0_2px_8px_rgba(0,0,0,0.08)]
+          backdrop-blur-md
+          transition-all duration-300 ease-out
+        "
+      >
+        {navItems.slice(0, 2).map((item, i) => (
+          <NavIcon key={i} {...item} />
+        ))}
 
-        {/* Mobile Navigation */}
-        <MobileNav>
-          <MobileNavHeader>
-            <NavbarLogo />
-            <MobileNavToggle
-              isOpen={isMobileMenuOpen}
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
-          </MobileNavHeader>
+        <Divider />
 
-          <MobileNavMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)}>
-            {navItems.map((item, idx) => (
-              <a
-                key={`mobile-link-${idx}`}
-                href={item.link}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600 dark:text-neutral-300">
-                <span className="block">{item.name}</span>
-              </a>
-            ))}
-            <div className="flex w-full flex-col gap-4">
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full">
-                Login
-              </NavbarButton>
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full">
-                Book a call
-              </NavbarButton>
-            </div>
-          </MobileNavMenu>
-        </MobileNav>
-      </Navbar>
+        {navItems.slice(2).map((item, i) => (
+          <NavIcon key={i} {...item} />
+        ))}
+
+        <Divider />
+
+        <AnimatedThemeToggler />
+      </motion.div>
+    </motion.nav>
   );
+}
+
+function NavIcon({ href, title, icon }) {
+  return (
+    <motion.a
+      href={href}
+      title={title}
+      whileHover={{ scale: 1.15 }}
+      transition={{ type: "spring", stiffness: 250, damping: 14 }}
+      className="
+        group relative flex items-center justify-center
+        w-11 h-11 rounded-xl
+        text-gray-700 dark:text-gray-300
+        transition-all duration-300 ease-out
+        hover:text-blue-600 dark:hover:text-blue-400
+        hover:bg-gray-100/90 dark:hover:bg-neutral-800/90
+        hover:shadow-[0_4px_14px_rgba(0,0,0,0.12)]
+        dark:hover:shadow-[0_4px_14px_rgba(255,255,255,0.05)]
+        cursor-pointer
+      "
+    >
+      {icon}
+    </motion.a>
+  );
+}
+
+function Divider() {
+  return <div className="h-6 w-px bg-gray-300 dark:bg-neutral-700" />;
 }

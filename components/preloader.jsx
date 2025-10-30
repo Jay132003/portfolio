@@ -19,35 +19,32 @@ const Loader = () => {
 };
 
 const StyledWrapper = styled.div`
+  /* Allow layout to flow with the rest of the page */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0; /* some spacing around loader */
+  width: 100%;
+
+  #box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
   #box div {
     display: inline-block;
     margin: 5px;
     font-size: 35px;
-    font-family: Arial, sans-serif; /* same as your original */
-    font-weight: normal; /* thinner font, same as before */
+    font-family: Arial, sans-serif;
+    font-weight: normal;
     animation: obrot 2s linear infinite;
-  }
-
-  #box {
-    width: 500px;
-    height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   @keyframes obrot {
     0% {
       transform: rotateX(0);
-    }
-    12.5% {
-      transform: rotateX(90deg);
-    }
-    25% {
-      transform: rotateX(180deg);
-    }
-    37.5% {
-      transform: rotateX(270deg);
     }
     50% {
       transform: rotateX(360deg);
@@ -57,7 +54,7 @@ const StyledWrapper = styled.div`
     }
   }
 
-  /* === Staggered delays + initial pause before starting === */
+  /* Staggered delays */
   #box div:nth-child(1) {
     animation-delay: 0.5s;
   }
