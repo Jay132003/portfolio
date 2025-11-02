@@ -1,109 +1,197 @@
-"use client"
+"use client";
 
-import { BentoGrid } from "./ui/bento-grid"
-import { ChevronRight, ExternalLink } from "lucide-react"
-import { motion } from "framer-motion"
+import { useState } from "react";
+import { ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Projects() {
+  const [openIndex, setOpenIndex] = useState(null);
+
   const projects = [
     {
-      id: 1,
       title: "Road Side Assistance",
-      description: "Visual design, Branding",
-      tags: ["Design", "Branding"],
-      color: "from-blue-500 to-cyan-500",
-      span: "md:col-span-2 md:row-span-1",
+      role: "Full-Stack Platform",
+      description:
+        "A roadside assistance platform for real-time service tracking, agent dispatch, and customer feedback management. Integrated with map-based live tracking and WhatsApp notifications.",
+      tech: [
+        { name: "React", icon: "⚛️" },
+        { name: "Node.js", icon: "🟢" },
+        { name: "MongoDB", icon: "🍃" },
+      ],
+      timeline: "September 2025 – Present",
+      link: "#",
     },
     {
-      id: 2,
       title: "E-Commerce Platform",
-      description: "Full-stack development",
-      tags: ["React", "Node.js", "MongoDB"],
-      color: "from-purple-500 to-pink-500",
-      span: "md:col-span-1 md:row-span-2",
+      role: "Frontend Developer",
+      description:
+        "Developed a scalable e-commerce solution supporting multiple vendors, product categories, and dynamic pricing. Added advanced filters, cart management, and Razorpay payment integration.",
+      tech: [
+        { name: "Next.js", icon: "▲" },
+        { name: "TailwindCSS", icon: "🎨" },
+        { name: "Firebase", icon: "🔥" },
+      ],
+      timeline: "June 2025 – August 2025",
+      link: "#",
     },
     {
-      id: 3,
       title: "AI Chat Application",
-      description: "Real-time messaging with AI",
-      tags: ["Next.js", "AI", "WebSocket"],
-      color: "from-orange-500 to-red-500",
-      span: "md:col-span-1 md:row-span-1",
+      role: "Product Engineer",
+      description:
+        "Built a chat interface using OpenAI APIs for real-time conversational AI with context memory, markdown rendering, and theme toggling.",
+      tech: [
+        { name: "Next.js", icon: "▲" },
+        { name: "OpenAI", icon: "🤖" },
+        { name: "WebSocket", icon: "🔗" },
+      ],
+      timeline: "April 2025 – June 2025",
+      link: "#",
     },
     {
-      id: 4,
       title: "HRMS Dashboard",
-      description: "Payroll & Attendance Automation",
-      tags: ["React", "MongoDB", "Tailwind"],
-      color: "from-green-500 to-emerald-400",
-      span: "md:col-span-1 md:row-span-1",
+      role: "Automation Developer",
+      description:
+        "End-to-end HRMS suite including payroll automation, attendance tracking, leave management, and employee performance analytics.",
+      tech: [
+        { name: "React", icon: "⚛️" },
+        { name: "Express.js", icon: "🚀" },
+        { name: "MongoDB", icon: "🍃" },
+      ],
+      timeline: "January 2025 – April 2025",
+      link: "#",
     },
-    {
-      id: 5,
-      title: "CRM Suite",
-      description: "Lead tracking & analytics",
-      tags: ["Next.js", "PostgreSQL", "Chart.js"],
-      color: "from-indigo-500 to-sky-400",
-      span: "md:col-span-2 md:row-span-1",
-    },
-  ]
+  ];
 
   return (
-    <section className="px-6 py-14 md:py-20 border-t border-gray-200 dark:[border-gray-700] bg-white dark:bg-[#212121]">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-10 md:mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white">Projects</h2>
-          <button className="flex items-center gap-2 text-black dark:text-white font-medium hover:gap-3 transition-all">
-            View All <ChevronRight size={20} />
-          </button>
+    <section
+      id="Projects"
+      className="w-full bg-transparent dark:bg-[#212121] transition-colors duration-300"
+    >
+      {/* ✦ Divider */}
+      <div className="relative flex items-center justify-center mt-8 mb-10">
+        <div className="absolute inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-amber-700/40 to-transparent dark:via-amber-500/40 animate-pulse" />
+        <div className="relative z-10 flex items-center gap-2 px-8 py-2 bg-gradient-to-r from-stone-50 via-stone-100 to-stone-50 dark:from-[#1b1a18] dark:via-[#242320] dark:to-[#1b1a18] rounded-full border border-stone-200/60 dark:border-stone-600/40 shadow-[0_0_15px_rgba(99,85,50,0.15)]">
+          <span className="text-amber-600 dark:text-amber-400 text-[18px]">✦</span>
+          <span className="text-lg sm:text-xl md:text-2xl font-semibold bg-gradient-to-r from-amber-600 via-stone-600 to-rose-400 dark:from-amber-400 dark:via-stone-400 dark:to-rose-300 bg-clip-text text-transparent">
+            Projects
+          </span>
+          <span className="text-amber-600 dark:text-amber-400 text-[18px]">✦</span>
         </div>
+      </div>
 
-        {/* Bento Grid */}
-        <BentoGrid className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 auto-rows-[200px] md:auto-rows-[240px]">
-          {projects.map((project) => (
+      {/* ✨ Project Cards */}
+      <div className="w-full px-0 pb-6 md:pb-8">
+        <div className="max-w-[950px] mx-auto">
+          <div className="flex items-center justify-between mb-10 md:mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 dark:text-amber-50">
+              Featured Work
+            </h2>
+            <button className="flex items-center gap-2 text-stone-700 dark:text-amber-100 font-medium hover:gap-3 transition-all">
+              View All <ExternalLink size={20} />
+            </button>
+          </div>
+
+          {projects.map((proj, i) => (
             <motion.div
-              key={project.id}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className={`group relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1a1a1a] ${project.span}`}
+              key={i}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut", delay: i * 0.04 }}
+              viewport={{ once: true }}
+              className="relative group mb-5"
             >
-              {/* Gradient Overlay */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-90 transition-opacity duration-500`}
-              />
+              {/* ✨ Hover Glow (Amber–Stone Blend) */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out blur-[18px] rounded-xl bg-gradient-to-r from-amber-700/10 via-stone-500/15 to-rose-400/10 dark:from-amber-400/15 dark:via-stone-400/20 dark:to-rose-300/15 pointer-events-none" />
 
-              {/* Content */}
-              <div className="relative z-10 h-full p-6 flex flex-col justify-between group-hover:text-white transition-all">
-                <div>
-                  <h3 className="text-lg md:text-xl font-semibold text-black dark:text-white group-hover:text-white transition-colors mb-1">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 group-hover:text-gray-100 transition-colors text-sm md:text-base">
-                    {project.description}
-                  </p>
-                </div>
+              <motion.div
+                whileHover={{
+                  scale: 1.015,
+                  y: -3,
+                  transition: { duration: 0.25, ease: "easeOut" },
+                }}
+                className="
+                  relative z-10 p-5 md:p-6
+                  rounded-xl border border-stone-200 dark:border-stone-700
+                  bg-white dark:bg-[#22211e]
+                  shadow-[0_4px_15px_rgba(80,70,50,0.08)]
+                  hover:shadow-[0_8px_25px_rgba(99,85,50,0.2)]
+                  transition-all duration-300 ease-out
+                  will-change-transform
+                "
+              >
+                <div className="flex flex-col md:flex-row md:items-center justify-between">
+                  {/* LEFT */}
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-lg md:text-xl font-semibold text-stone-900 dark:text-amber-50 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-150">
+                        {proj.title}
+                      </h3>
+                      <button
+                        onClick={() =>
+                          setOpenIndex(openIndex === i ? null : i)
+                        }
+                        className="text-stone-500 dark:text-amber-400 hover:text-amber-600 dark:hover:text-amber-300 transition-transform duration-150 active:scale-90"
+                      >
+                        {openIndex === i ? (
+                          <ChevronUp size={18} />
+                        ) : (
+                          <ChevronDown size={18} />
+                        )}
+                      </button>
+                    </div>
 
-                <div className="flex flex-wrap gap-2 mt-3">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 text-xs bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300 rounded-full group-hover:bg-white group-hover:bg-opacity-20 group-hover:text-white transition-all"
+                    <p className="text-sm text-stone-600 dark:text-amber-300 mt-1">
+                      {proj.role}
+                    </p>
+
+                    {/* Tech Stack */}
+                    <div className="flex flex-wrap gap-3 mt-2">
+                      {proj.tech.map((t) => (
+                        <div
+                          key={t.name}
+                          className="flex items-center gap-1.5 text-sm text-stone-700 dark:text-amber-200"
+                        >
+                          <span>{t.icon}</span>
+                          <span>{t.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* RIGHT */}
+                  <div className="flex items-center gap-4 mt-3 md:mt-0">
+                    <p className="text-stone-500 dark:text-amber-400 text-sm md:text-base whitespace-nowrap">
+                      {proj.timeline}
+                    </p>
+                    <a
+                      href={proj.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 px-3 py-1.5 border border-stone-300 dark:border-stone-600 rounded-md text-sm text-stone-800 dark:text-amber-100 hover:bg-amber-600 hover:text-white dark:hover:bg-amber-500 transition-colors duration-150"
                     >
-                      {tag}
-                    </span>
-                  ))}
+                      View <ExternalLink size={14} />
+                    </a>
+                  </div>
                 </div>
-              </div>
 
-              {/* Hover Icon */}
-              <div className="absolute top-5 right-5 opacity-0 group-hover:opacity-100 transition-opacity z-20">
-                <ExternalLink className="text-white" size={20} />
-              </div>
+                {/* Expand Section */}
+                <motion.div
+                  animate={{
+                    height: openIndex === i ? "auto" : 0,
+                    opacity: openIndex === i ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.25, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <p className="mt-3 text-sm text-stone-700 dark:text-amber-200 leading-relaxed border-t border-stone-200 dark:border-stone-700 pt-3">
+                    {proj.description}
+                  </p>
+                </motion.div>
+              </motion.div>
             </motion.div>
           ))}
-        </BentoGrid>
+        </div>
       </div>
     </section>
-  )
+  );
 }

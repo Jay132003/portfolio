@@ -3,6 +3,7 @@
 import { useState } from "react";
 import SpotifyPlaylist from "./spotify-playlist";
 import { Marquee } from "./ui/marquee";
+import { motion } from "framer-motion";
 
 const PLAYLISTS = [
   {
@@ -57,7 +58,13 @@ export default function WhatIListen() {
   }
 
   return (
-    <div className="bg-[#F7F7F7] dark:bg-[#2C2C2C] border border-gray-200 dark:border-[#2C2C2C] rounded-2xl p-8 space-y-6">
+    <motion.div
+      id="WhatIListen"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      className="bg-[#F7F7F7] dark:bg-[#2C2C2C] border border-gray-200 dark:border-[#2C2C2C] rounded-2xl px-6 sm:px-8 md:px-10 py-8 space-y-6"
+    >
       <div>
         <h2 className="text-3xl font-bold text-foreground mb-2">
           What I Listen
@@ -100,6 +107,6 @@ export default function WhatIListen() {
           </div>
         </Marquee>
       </div>
-    </div>
+    </motion.div>
   );
 }

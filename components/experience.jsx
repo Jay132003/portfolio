@@ -1,132 +1,197 @@
-"use client"
+"use client";
 
-import React from "react"
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
-import { Card } from "@/components/ui/card"
+import { useState } from "react";
+import { ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Experience() {
+  const [openIndex, setOpenIndex] = useState(null);
+
   const experience = [
     {
-      id: 1,
-      name: "Road Side Assistance",
-      description: "Visual design, Branding",
-      icon: "M",
-      bgColor: "bg-gradient-to-br from-slate-900 to-slate-700",
+      title: "Odena",
+      role: "Consultant",
+      description:
+        "Worked on business automation pipelines, improving workflow efficiency and internal dashboards. Implemented scalable microservices for internal analytics.",
+      tech: [
+        { name: "Node.js", icon: "🟢" },
+        { name: "React", icon: "⚛️" },
+        { name: "PostgreSQL", icon: "🐘" },
+      ],
+      timeline: "September 2025 – Present",
+      link: "#",
     },
     {
-      id: 2,
-      name: "Insight Zone",
-      description: "Product design, Icon design",
-      icon: "□",
-      bgColor: "bg-gradient-to-br from-blue-600 to-blue-400",
+      title: "Hobfit",
+      role: "SDE-II",
+      description:
+        "Developed interactive fitness tracking modules, integrated wearable APIs, and implemented smooth real-time progress visualization.",
+      tech: [
+        { name: "Next.js", icon: "▲" },
+        { name: "TypeScript", icon: "🌀" },
+        { name: "Firebase", icon: "🔥" },
+      ],
+      timeline: "June 2025 – August 2025",
+      link: "#",
     },
     {
-      id: 3,
-      name: "Simply",
-      description: "Landing page, Illustration design",
-      icon: "⚡",
-      bgColor: "bg-gradient-to-br from-orange-400 to-orange-300",
+      title: "Future Tech Design",
+      role: "Engineering Intern",
+      description:
+        "Collaborated on design automation for industrial applications and optimized UI components for better load performance.",
+      tech: [
+        { name: "React", icon: "⚛️" },
+        { name: "Figma", icon: "🎨" },
+        { name: "Vercel", icon: "▲" },
+      ],
+      timeline: "April 2025 – June 2025",
+      link: "#",
     },
-  ]
+    {
+      title: "Fada Club",
+      role: "Community Creator",
+      description:
+        "Founded and managed a tech-focused community for open-source collaboration, hosting workshops and mentoring sessions.",
+      tech: [
+        { name: "Notion", icon: "🗂️" },
+        { name: "Discord", icon: "💬" },
+        { name: "GitHub", icon: "🐙" },
+      ],
+      timeline: "June 2024 – May 2025",
+      link: "#",
+    },
+  ];
 
   return (
     <section
-      className="
-        bg-[#F7F7F7] dark:bg-[#2C2C2C]
-        rounded-2xl
-        px-5 sm:px-8 md:px-12
-        py-8 sm:py-10 md:py-12
-        border border-gray-200 dark:border-[#2C2C2C]
-      "
+      id="Experience"
+      className="w-full bg-transparent dark:bg-[#212121] transition-colors duration-300"
     >
-      {/* Header */}
-      <div
-        className="
-          flex flex-col md:flex-row
-          items-start md:items-center
-          justify-between
-          mb-6 sm:mb-8 gap-4
-        "
-      >
-        <div className="flex items-center gap-3">
-          <div className="w-2 h-2 rounded-full bg-gray-400"></div>
-          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-[#555555] dark:text-[#C0C0C0] tracking-tight">
+      {/* ✦ Divider */}
+      <div className="relative flex items-center justify-center mt-8 mb-10">
+        <div className="absolute inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-amber-700/40 to-transparent dark:via-amber-500/40 animate-pulse" />
+        <div className="relative z-10 flex items-center gap-2 px-8 py-2 bg-gradient-to-r from-stone-50 via-stone-100 to-stone-50 dark:from-[#1b1a18] dark:via-[#242320] dark:to-[#1b1a18] rounded-full border border-stone-200/60 dark:border-stone-600/40 shadow-[0_0_15px_rgba(99,85,50,0.15)]">
+          <span className="text-amber-600 dark:text-amber-400 text-[18px]">✦</span>
+          <span className="text-lg sm:text-xl md:text-2xl font-semibold bg-gradient-to-r from-amber-600 via-stone-600 to-rose-400 dark:from-amber-400 dark:via-stone-400 dark:to-rose-300 bg-clip-text text-transparent">
             Experience
-          </h2>
-        </div>
-
-        <div className="w-full md:w-auto md:ml-auto">
-          <Button
-            variant="outline"
-            className="
-              border border-gray-300
-              hover:bg-gray-100 dark:hover:bg-gray-800
-              font-medium md:font-semibold
-              bg-transparent
-              text-sm md:text-base
-              w-full md:w-auto
-              h-9 sm:h-10 md:h-11
-              px-4 sm:px-6
-              rounded-xl
-            "
-          >
-            View All
-            <ArrowRight size={18} className="ml-2" />
-          </Button>
+          </span>
+          <span className="text-amber-600 dark:text-amber-400 text-[18px]">✦</span>
         </div>
       </div>
 
-      {/* Experience cards */}
-      <div className="flex flex-col gap-4 sm:gap-5">
-        {experience.map((exp) => (
-          <Card
-            key={exp.id}
-            className="
-              bg-white dark:bg-[#373737]
-              px-4 py-4 sm:px-6 sm:py-5
-              border border-gray-100 dark:border-[#2C2C2C]
-              rounded-2xl
-              shadow-sm hover:shadow-md
-              transition-all duration-200
-              hover:-translate-y-[2px]
-              active:scale-[0.99]
-            "
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3 sm:gap-4">
-                {/* Icon */}
-                <div
-                  className={`
-                    w-12 h-12 sm:w-14 sm:h-14
-                    rounded-full ${exp.bgColor}
-                    flex items-center justify-center
-                    text-white text-lg sm:text-xl font-bold flex-shrink-0
-                  `}
-                >
-                  {exp.icon}
+      {/* ✨ Experience Cards */}
+      <div className="w-full px-0 pb-6 md:pb-8">
+        <div className="max-w-[950px] mx-auto">
+          <div className="flex items-center justify-between mb-10 md:mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 dark:text-amber-50">
+              Professional Journey
+            </h2>
+            <button className="flex items-center gap-2 text-stone-700 dark:text-amber-100 font-medium hover:gap-3 transition-all">
+              View All <ExternalLink size={20} />
+            </button>
+          </div>
+
+          {experience.map((exp, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut", delay: i * 0.04 }}
+              viewport={{ once: true }}
+              className="relative group mb-5"
+            >
+              {/* ✨ Hover Glow (Amber–Stone Blend) */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out blur-[18px] rounded-xl bg-gradient-to-r from-amber-700/10 via-stone-500/15 to-rose-400/10 dark:from-amber-400/15 dark:via-stone-400/20 dark:to-rose-300/15 pointer-events-none" />
+
+              <motion.div
+                whileHover={{
+                  scale: 1.015,
+                  y: -3,
+                  transition: { duration: 0.25, ease: "easeOut" },
+                }}
+                className="
+                  relative z-10 p-5 md:p-6
+                  rounded-xl border border-stone-200 dark:border-stone-700
+                  bg-white dark:bg-[#22211e]
+                  shadow-[0_4px_15px_rgba(80,70,50,0.08)]
+                  hover:shadow-[0_8px_25px_rgba(99,85,50,0.2)]
+                  transition-all duration-300 ease-out
+                  will-change-transform
+                "
+              >
+                <div className="flex flex-col md:flex-row md:items-center justify-between">
+                  {/* LEFT */}
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-lg md:text-xl font-semibold text-stone-900 dark:text-amber-50 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-150">
+                        {exp.title}
+                      </h3>
+                      <button
+                        onClick={() =>
+                          setOpenIndex(openIndex === i ? null : i)
+                        }
+                        className="text-stone-500 dark:text-amber-400 hover:text-amber-600 dark:hover:text-amber-300 transition-transform duration-150 active:scale-90"
+                      >
+                        {openIndex === i ? (
+                          <ChevronUp size={18} />
+                        ) : (
+                          <ChevronDown size={18} />
+                        )}
+                      </button>
+                    </div>
+
+                    <p className="text-sm text-stone-600 dark:text-amber-300 mt-1">
+                      {exp.role}
+                    </p>
+
+                    {/* Tech Stack */}
+                    <div className="flex flex-wrap gap-3 mt-2">
+                      {exp.tech.map((t) => (
+                        <div
+                          key={t.name}
+                          className="flex items-center gap-1.5 text-sm text-stone-700 dark:text-amber-200"
+                        >
+                          <span>{t.icon}</span>
+                          <span>{t.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* RIGHT */}
+                  <div className="flex items-center gap-4 mt-3 md:mt-0">
+                    <p className="text-stone-500 dark:text-amber-400 text-sm md:text-base whitespace-nowrap">
+                      {exp.timeline}
+                    </p>
+                    <a
+                      href={exp.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 px-3 py-1.5 border border-stone-300 dark:border-stone-600 rounded-md text-sm text-stone-800 dark:text-amber-100 hover:bg-amber-600 hover:text-white dark:hover:bg-amber-500 transition-colors duration-150"
+                    >
+                      View <ExternalLink size={14} />
+                    </a>
+                  </div>
                 </div>
 
-                {/* Info */}
-                <div>
-                  <h3 className="text-base sm:text-lg font-semibold text-[#2C2C2C] dark:text-white mb-[2px]">
-                    {exp.name}
-                  </h3>
-                  <p className="text-sm text-[#555555] dark:text-[#C0C0C0] leading-snug">
+                {/* Expand Section */}
+                <motion.div
+                  animate={{
+                    height: openIndex === i ? "auto" : 0,
+                    opacity: openIndex === i ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.25, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <p className="mt-3 text-sm text-stone-700 dark:text-amber-200 leading-relaxed border-t border-stone-200 dark:border-stone-700 pt-3">
                     {exp.description}
                   </p>
-                </div>
-              </div>
-
-              {/* Arrow */}
-              <ArrowRight
-                size={20}
-                className="text-gray-400 group-hover:text-gray-600 transition-colors"
-              />
-            </div>
-          </Card>
-        ))}
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
-  )
+  );
 }

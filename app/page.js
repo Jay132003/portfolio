@@ -6,10 +6,10 @@ import WhatIListen from "@/components/what-i-listen";
 
 export default function Home() {
   return (
-    <main className="min-h-screen p-6 bg-white dark:bg-[#212121] transition-colors duration-500">
-      <div className="max-w-5xl mx-auto pt-8">
-        <div id="Home" className="bg-white dark:bg-[#212121] p-8 md:p-4 mb-8">
-          <MainContent />
+    <main className="min-h-screen bg-white dark:bg-[#212121] transition-colors duration-500 !p-0 !m-0">
+      <div className="max-w-5xl mx-auto">
+        <div id="Home" className="bg-white dark:bg-[#212121]">
+          <MainContent/>
           <div id="Projects" className="mt-8"><Projects /></div>
           <div id="Experience" className="mt-8"><Experience /></div>
           <div id="WhatIListen" className="mt-8"><WhatIListen /></div>

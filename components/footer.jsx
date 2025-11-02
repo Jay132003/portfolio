@@ -3,6 +3,7 @@
 import { Button } from "./ui/button"
 import { useState } from "react"
 import { Globe } from "./ui/globe"
+import { motion } from "framer-motion"
 
 export default function Footer() {
   const [isCopied, setIsCopied] = useState(false)
@@ -14,7 +15,13 @@ export default function Footer() {
   }
 
   return (
-    <footer className="w-full select-none">
+    <motion.footer
+      id="Contact"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      className="w-full select-none"
+    >
         {/* Main Footer Container with Border */}
         <div className="bg-white dark:bg-[#212121]">
           <div className="relative h-[300px] overflow-hidden">
@@ -22,7 +29,7 @@ export default function Footer() {
           {/* Let's Work Together Section */}
           <div className="absolute mb-8 text-center top-[26%] left-[22%]">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-[#FFFFFF] mb-4">The Future Needs Your Vision.</h2>
-            <p className=" text-1xl sm:text-lg text-gray-600 dark:text-[#C0C0C0] mb-8">And I’ll make sure it looks and feels extraordinary.</p>
+            <p className=" text-1xl sm:text-lg text-gray-600 dark:text-[#C0C0C0] mb-8">And I'll make sure it looks and feels extraordinary.</p>
 
             {/* CTA Buttons */}
             <div className="flex gap-4 justify-center">
@@ -171,6 +178,6 @@ export default function Footer() {
             </p>
           </div>
         </div>
-    </footer>
+    </motion.footer>
   )
 }

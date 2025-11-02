@@ -26,8 +26,9 @@ export function Navigation() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="
-        fixed bottom-8 left-1/2 -translate-x-1/2
-        z-50
+        fixed bottom-8
+        left-6 right-6 md:left-1/2 md:-translate-x-1/2 md:right-auto
+        z-50 w-auto md:w-auto
       "
     >
       <motion.div
@@ -56,7 +57,7 @@ export function Navigation() {
 
         <Divider />
 
-        <AnimatedThemeToggler />
+        <AnimatedThemeToggler/>
       </motion.div>
     </motion.nav>
   );
