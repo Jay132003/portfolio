@@ -80,7 +80,7 @@ export default function Experience() {
       </div>
 
       {/* ✨ Experience Cards */}
-      <div className="w-full px-0 pb-6 md:pb-8">
+      <div className="w-full px-4 sm:px-[clamp(1rem,4vw,3rem)] py-6 md:py-10">
         <div className="max-w-[950px] mx-auto">
           <div className="flex items-center justify-between mb-10 md:mb-14">
             <h2 className="text-3xl md:text-4xl font-bold text-stone-900 dark:text-amber-50">

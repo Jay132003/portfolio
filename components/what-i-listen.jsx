@@ -4,6 +4,7 @@ import { useState } from "react";
 import SpotifyPlaylist from "./spotify-playlist";
 import { Marquee } from "./ui/marquee";
 import { motion } from "framer-motion";
+import { SiSpotify } from "react-icons/si";
 
 const PLAYLISTS = [
   {
@@ -41,6 +42,7 @@ const PLAYLISTS = [
 export default function WhatIListen() {
   const [showPlaylist, setShowPlaylist] = useState(false);
   const [selectedPlaylist, setSelectedPlaylist] = useState(null);
+  const [hoveredId, setHoveredId] = useState(null);
 
   const handlePlaylistClick = (playlist) => {
     setSelectedPlaylist(playlist);
@@ -58,55 +60,119 @@ export default function WhatIListen() {
   }
 
   return (
-    <motion.div
+    <motion.section
       id="WhatIListen"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      className="bg-[#F7F7F7] dark:bg-[#2C2C2C] border border-gray-200 dark:border-[#2C2C2C] rounded-2xl px-6 sm:px-8 md:px-10 py-8 space-y-6"
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="
+        w-full max-w-[950px] mx-auto
+        px-2 sm:px-4
+        py-6 sm:py-8
+        bg-transparent relative
+      "
     >
-      <div>
-        <h2 className="text-3xl font-bold text-foreground mb-2">
-          What I Listen
-        </h2>
-        <p className="text-muted-foreground">
-          Check out my favorite Spotify playlists
+      {/* 🎶 Header */}
+      <div className="text-center mb-8">
+        <div className="flex items-center justify-center gap-3 mb-2">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.4, ease: "backOut" }}
+            className="flex items-center justify-center w-9 h-9 rounded-full bg-[#1DB954]/10 ring-2 ring-[#1DB954]/30"
+          >
+            <SiSpotify className="text-[#1DB954] text-xl" />
+          </motion.div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-stone-900 dark:text-stone-50">
+            What I Listen
+          </h2>
+        </div>
+        <p className="text-stone-600 dark:text-stone-300 text-sm sm:text-base flex items-center justify-center gap-1">
+          My playlists that keep the vibe alive 🎧
         </p>
       </div>
 
-      {/* ✅ FIXED MARQUEE */}
-      <div className="relative overflow-hidden rounded-xl">
-        <Marquee speed={30}>
-          <div className="flex gap-6 px-2">
+      {/* 🎧 Playlist Marquee */}
+      <div className="relative overflow-visible">
+        <Marquee speed={25}>
+          <div className="flex gap-5 sm:gap-8 px-2 sm:px-4">
             {PLAYLISTS.map((playlist) => (
-              <div key={playlist.id} className="playlist-card-container">
-                {/* This inner container isolates hover to one card */}
-                <div
-                  onClick={() => handlePlaylistClick(playlist)}
-                  className="cursor-pointer flex flex-col p-4 bg-card border border-border rounded-xl hover:shadow-lg transition-transform duration-500 flex-shrink-0 w-48"
-                >
-                  <div className="relative overflow-hidden rounded-lg mb-4 aspect-square">
+              <motion.div
+                key={playlist.id}
+                onMouseEnter={() => setHoveredId(playlist.id)}
+                onMouseLeave={() => setHoveredId(null)}
+                onClick={() => handlePlaylistClick(playlist)}
+                className={`
+                  relative flex-shrink-0 w-40 sm:w-48 cursor-pointer rounded-2xl
+                  bg-white/80 dark:bg-[#1a1a1a]/80 backdrop-blur-md
+                  border border-stone-200 dark:border-stone-700
+                  transition-all duration-300 ease-out
+                  ${
+                    hoveredId === playlist.id
+                      ? "border-[#1DB954]/60 shadow-[0_0_25px_rgba(29,185,84,0.25)]"
+                      : "shadow-[0_3px_10px_rgba(0,0,0,0.06)]"
+                  }
+                `}
+              >
+                <div className="p-3 flex flex-col">
+                  {/* 🖼️ Playlist Image */}
+                  <motion.div
+                    whileHover={{
+                      scale: 1.05,
+                      transition: { duration: 0.25, ease: "easeOut" },
+                    }}
+                    className={`relative overflow-hidden rounded-xl mb-3 aspect-square transition-all duration-300 ${
+                      hoveredId === playlist.id
+                        ? "ring-2 ring-[#1DB954]/40"
+                        : "ring-0"
+                    }`}
+                  >
                     <img
                       src={playlist.cover || "/placeholder.svg"}
                       alt={playlist.name}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      className={`w-full h-full object-cover transition-transform duration-500 ${
+                        hoveredId === playlist.id ? "scale-110" : "scale-100"
+                      }`}
                     />
-                    <div className="absolute inset-0 bg-black/40 hover:bg-black/60 transition-all duration-500 flex items-center justify-center opacity-0 hover:opacity-100">
-                      <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-lg shadow-lg">
-                        ▶
-                      </div>
-                    </div>
-                  </div>
-                  <h3 className="font-semibold text-foreground hover:text-green-500 transition-colors duration-300 text-base truncate">
+                    {hoveredId === playlist.id && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.25 }}
+                        className="absolute inset-0 bg-black/40 flex items-center justify-center rounded-xl"
+                      >
+                        <motion.div
+                          animate={{
+                            scale: [1, 1.08, 1],
+                            opacity: [1, 0.95, 1],
+                          }}
+                          transition={{
+                            repeat: Infinity,
+                            duration: 1.8,
+                            ease: "easeInOut",
+                          }}
+                          className="w-9 h-9 bg-[#1DB954] rounded-full flex items-center justify-center text-white text-xs shadow-[0_0_15px_rgba(29,185,84,0.5)]"
+                        >
+                          ▶
+                        </motion.div>
+                      </motion.div>
+                    )}
+                  </motion.div>
+
+                  {/* 📜 Playlist Text */}
+                  <h3 className="font-semibold text-stone-900 dark:text-white hover:text-[#1DB954] transition-colors duration-200 text-sm truncate">
                     {playlist.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground">Click to open</p>
+                  <p className="text-xs text-stone-500 dark:text-stone-400 mt-1">
+                    Tap to play
+                  </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </Marquee>
       </div>
-    </motion.div>
+    </motion.section>
   );
 }
